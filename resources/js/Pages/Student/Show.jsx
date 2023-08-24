@@ -3,15 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Head, Link, usePage } from "@inertiajs/react";
 import React from "react";
 import {
-    faPenNib,
     faDroplet,
     faBook,
     faPhone,
     faListNumeric,
     faWeight,
-    faCheck,
     faCheckCircle,
-    faCross,
     faCancel,
 } from "@fortawesome/free-solid-svg-icons";
 
@@ -120,7 +117,11 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
                         <div className="mt-10">
                             <div>
                                 <div>
-                                    <button className="px-6 py-2 font-semibold bg-green-500 text-white text-xl">
+                                    <button className="px-6 py-2 font-semibold bg-green-500 text-white text-xl flex gap-4 items-center justify-center">
+                                        <FontAwesomeIcon
+                                            icon={faPhone}
+                                            className="text-white"
+                                        />
                                         <a href={`tel:${phone}`}>Call Now</a>
                                     </button>
                                 </div>

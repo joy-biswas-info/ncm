@@ -23,6 +23,3 @@ NCM is a student directory application. Created with Laravel, and React Inertia 
 - Tailwind css.
 - Font awesome (latest).
 - Axios.
-
-
-
