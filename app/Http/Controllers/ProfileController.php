@@ -41,6 +41,8 @@ class ProfileController extends Controller
         return Redirect::route('profile.edit');
     }
 
+
+
     /**
      * Delete the user's account.
      */

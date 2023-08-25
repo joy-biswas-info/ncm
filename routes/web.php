@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Models\User;
@@ -54,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin-profile', function () {
         return Inertia("Admin/AdminProfile");
     })->name('admin.profile');
+    Route::patch('/approve-user/{userId}', [AdminController::class, 'approveUser'])->name('approve.user');
 });
 
 

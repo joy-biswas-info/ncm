@@ -82,9 +82,7 @@ const List = ({ auth, mustVerifyEmail, status }) => {
                     {blood_group &&
                         filteredStudents.length <= 0 &&
                         !bloodResult && (
-                            <h3 className="mt-4">
-                                No Result for {blood_group} Showing All
-                            </h3>
+                            <h3 className="mt-4">You are showing all</h3>
                         )}
                 </div>
 

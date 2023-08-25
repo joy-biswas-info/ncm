@@ -12,7 +12,7 @@ export default function AdminLayout({ user, header, children }) {
     return (
         <div className="min-h-screen bg-gray-800 text-white">
             <nav className="bg-gray-800 text-white border-b border-gray-100">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-2">
                     <div className="flex justify-between h-16">
                         <div className="flex">
                             <div className="shrink-0 flex items-center w-12">
@@ -24,7 +24,7 @@ export default function AdminLayout({ user, header, children }) {
                             <div className="hidden text-white space-x-8 sm:-my-px sm:ml-10 sm:flex">
                                 <NavLink
                                     href={route("admin.dashboard")}
-                                    active={route().current("dashboard")}
+                                    active={route().current("admin.dashboard")}
                                 >
                                     Dashboard
                                 </NavLink>

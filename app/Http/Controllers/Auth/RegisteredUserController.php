@@ -54,7 +54,7 @@ class RegisteredUserController extends Controller
         DB::beginTransaction();
         try {
             if (!$request->hasFile('profile_photo')) {
-                $userField['profile_photo'] = './logo.png';
+                $userField['profile_photo'] = '/logo.png';
             } else {
                 $userField['profile_photo'] = $request->file('profile_photo')->storePublicly('profiles', 'public');
             }
