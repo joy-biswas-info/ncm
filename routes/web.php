@@ -41,21 +41,23 @@ Route::middleware('auth')->group(function () {
     Route::get('/all-student/{student}', [StudentController::class, 'show'])->name('single.student');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'adminallowed')->group(function () {
     Route::get('/all-user', function () {
         $users = User::get();
         return Inertia::render('Admin/AllUser', [
             'user' => $users
         ]);
     })->name('all.user');
-
-
     // Show Admin Dashboard 
     Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    // update admin Profile 
     Route::get('/admin-profile', function () {
         return Inertia("Admin/AdminProfile");
     })->name('admin.profile');
+    // Approve user account 
     Route::patch('/approve-user/{userId}', [AdminController::class, 'approveUser'])->name('approve.user');
+    // Get a single user details for admin 
+    Route::get('/users/{user}', [AdminController::class, 'show'])->name('single.user');
 });
 
 

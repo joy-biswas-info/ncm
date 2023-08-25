@@ -50,7 +50,7 @@ export default function Dashboard({ auth }) {
         >
             <Head title="Dashboard" />
 
-            <section className=" container px-4 md:px-20 lg:px-24 py-4 mx-auto">
+            <section className=" container px-4 py-4 mx-auto">
                 <div className="flex flex-wrap justify-center md:gap-4 md:justify-between items-center mb-4 border-b-2 gap-2">
                     <div className="flex gap-2 items-center flex-wrap">
                         <img
@@ -67,7 +67,7 @@ export default function Dashboard({ auth }) {
                         </h1>
                     </div>
                     <div className="my-4">
-                        <button className="px-6 py-2 font-semibold bg-green-500 text-white text-xl flex gap-4 items-center justify-center">
+                        <button className="px-6 py-2 font-semibold bg-green-500 text-white text-xl flex gap-2 md:gap-4 items-center justify-center">
                             <FontAwesomeIcon
                                 icon={faPenNib}
                                 className="text-white"

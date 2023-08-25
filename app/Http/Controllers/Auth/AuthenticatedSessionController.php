@@ -24,6 +24,13 @@ class AuthenticatedSessionController extends Controller
             'status' => session('status'),
         ]);
     }
+    public function createAdmin(): Response
+    {
+        return Inertia::render('Admin/Login', [
+            'canResetPassword' => Route::has('password.request'),
+            'status' => session('status'),
+        ]);
+    }
 
     /**
      * Handle an incoming authentication request.
@@ -35,6 +42,15 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         return redirect()->intended(RouteServiceProvider::HOME);
+    }
+
+    public function storeAdmin(LoginRequest $request): RedirectResponse
+    {
+        $request->authenticate();
+
+        $request->session()->regenerate();
+
+        return redirect()->intended('/admin-dashboard');
     }
 
     /**
