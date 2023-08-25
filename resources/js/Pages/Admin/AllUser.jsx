@@ -1,4 +1,4 @@
-import { useForm, usePage } from "@inertiajs/react";
+import { Head, useForm, usePage } from "@inertiajs/react";
 import React from "react";
 import AdminLayout from "@/Layouts/AdminLayout";
 
@@ -13,6 +13,7 @@ const AllUser = ({ auth, mustVerifyEmail, status }) => {
 
     return (
         <AdminLayout user={auth.user}>
+            <Head title="All Users" />
             <section className="container mx-auto my-8 overflow-x-auto">
                 <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-250 p-4">
