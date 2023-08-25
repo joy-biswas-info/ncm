@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
+use App\Models\User;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,6 +37,15 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/all-student', [StudentController::class, 'index'])->name('all.student');
     Route::get('/all-student/{student}', [StudentController::class, 'show'])->name('single.student');
+});
+
+Route::middleware('auth')->group(function () {
+    Route::get('/all-user-admin', function () {
+        $users = User::get();
+        return Inertia::render('Admin/AllUser', [
+            'user' => $users
+        ]);
+    });
 });
 
 require __DIR__ . '/auth.php';

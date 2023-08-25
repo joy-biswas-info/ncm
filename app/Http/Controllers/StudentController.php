@@ -18,7 +18,7 @@ class StudentController extends Controller
             $searchTerm = $request->input('search');
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('name', 'like', "%$searchTerm%")
-                    ->orWhere('blood_group', 'like', "%$searchTerm%");
+                    ->orWhere('academic_year', 'like', "%$searchTerm%");
             });
         }
 
@@ -27,10 +27,10 @@ class StudentController extends Controller
             $query->where('blood_group', $bloodGroup);
         }
 
-        $users = $query->get();
+        $students = $query->get();
 
         return Inertia::render('Student/List', [
-            'users' => $users,
+            'students' => $students,
         ]);
     }
 

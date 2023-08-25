@@ -53,6 +53,7 @@ export default function Register() {
                         autoComplete="name"
                         isFocused={true}
                         onChange={(e) => setData("name", e.target.value)}
+                        placeholder="Your Name"
                         required
                     />
 
@@ -71,6 +72,7 @@ export default function Register() {
                         autoComplete="username"
                         onChange={(e) => setData("email", e.target.value)}
                         required
+                        placeholder="Your Email"
                     />
 
                     <InputError message={errors.email} className="mt-2" />
@@ -88,6 +90,7 @@ export default function Register() {
                         autoComplete="phone"
                         onChange={(e) => setData("phone", e.target.value)}
                         required
+                        placeholder="Your Phone Number"
                     />
 
                     <InputError message={errors.phone} className="mt-2" />
@@ -158,7 +161,7 @@ export default function Register() {
                         htmlFor="ready_to_donet"
                         className="block font-medium text-gray-700"
                     >
-                        Ready to Donate Blood
+                        Interested to Donate Blood
                     </label>
                     <div className="mt-1">
                         <label className="inline-flex items-center">
@@ -207,6 +210,7 @@ export default function Register() {
                         autoComplete="age"
                         onChange={(e) => setData("age", e.target.value)}
                         required
+                        placeholder="Your Age"
                     />
 
                     <InputError message={errors.age} className="mt-2" />
@@ -222,6 +226,7 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="weight"
                         onChange={(e) => setData("weight", e.target.value)}
+                        placeholder=" Your Weight Example 52"
                         required
                     />
 
@@ -263,6 +268,7 @@ export default function Register() {
                         className="mt-1 block w-full"
                         autoComplete="class_roll"
                         onChange={(e) => setData("class_roll", e.target.value)}
+                        placeholder="Your class roll"
                         required
                     />
 
@@ -281,6 +287,7 @@ export default function Register() {
                         onChange={(e) =>
                             setData("gurdian_name", e.target.value)
                         }
+                        placeholder="Father's/Mother's Name"
                         required
                     />
 
@@ -305,6 +312,7 @@ export default function Register() {
                         onChange={(e) =>
                             setData("gurdian_phone_no", e.target.value)
                         }
+                        placeholder="E.G. 01845727676"
                         required
                     />
 
@@ -329,6 +337,7 @@ export default function Register() {
                         onChange={(e) =>
                             setData("permanent_address", e.target.value)
                         }
+                        placeholder="Your Permanent Address"
                         required
                     />
 

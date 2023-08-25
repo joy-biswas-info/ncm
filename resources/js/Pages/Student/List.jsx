@@ -7,22 +7,25 @@ const List = ({ auth, mustVerifyEmail, status }) => {
     const [search, setSearch] = useState("");
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [blood_group, setBloodGroup] = useState([]);
-    const allStudent = usePage().props.users;
+    const allStudent = usePage().props.students;
 
     // Handeling Search
     const handleSearch = (e) => {
-        setBloodGroup("");
         e.preventDefault();
-        const searchTerm = search.toLowerCase(); // Convert search term to lowercase for case-insensitive search
+    };
+    useEffect(() => {
+        const searchTerm = search.toLowerCase();
         const filtered = allStudent.filter(
             (student) =>
                 student.name.toLowerCase().includes(searchTerm) ||
-                student.blood_group.toLowerCase().includes(searchTerm)
+                student.blood_group.toLowerCase().includes(searchTerm) ||
+                student.academic_year.toLowerCase().includes(searchTerm)
         );
         setFilteredStudents(filtered);
-    };
+    }, [search]);
 
     useEffect(() => {
+        setSearch("");
         const filtered = allStudent.filter(
             (student) => !blood_group || student.blood_group === blood_group
         );
@@ -30,52 +33,52 @@ const List = ({ auth, mustVerifyEmail, status }) => {
     }, [blood_group]);
 
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    List
-                </h2>
-            }
-        >
+        <AuthenticatedLayout user={auth.user}>
             <Head title="All Student" />
-            <form onSubmit={handleSearch}>
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Search by name or email"
-                    value={search}
-                    onChange={(e) => setSearch(e.target.value)}
-                />
-                <button type="submit">Search</button>
+            <section className="container mx-auto my-6">
+                <div className="flex items-center-justify-center">
+                    <form>
+                        <select
+                            name="blood_group"
+                            value={blood_group}
+                            onChange={(e) => setBloodGroup(e.target.value)}
+                        >
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="B+">B+</option>
+                        </select>
+                    </form>
+                    <form onSubmit={handleSearch}>
+                        <input
+                            type="text"
+                            name="search"
+                            placeholder="Search by name or email"
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                        />
+                        {/* <button type="submit">Search</button> */}
+                    </form>
+                </div>
+                {blood_group &&
+                    filteredStudents.length > 0 &&
+                    search === "" && (
+                        <h3 className="mt-4">
+                            Result Showing for {blood_group}
+                        </h3>
+                    )}
 
-                <select
-                    name="blood_group"
-                    value={blood_group}
-                    onChange={(e) => setBloodGroup(e.target.value)}
-                >
-                    <option value="">Select Blood Group</option>
-                    <option value="A+">A+</option>
-                    <option value="B+">B+</option>
-                    {/* Add more options for other blood groups */}
-                </select>
-                {/* <button type="submit">Filter</button> */}
-            </form>
-            {filteredStudents.length <= 0 && <div>All Student</div>}
-            {blood_group && filteredStudents.length > 0 && (
-                <h3>Result Showing for {blood_group}</h3>
-            )}
-            {search && filteredStudents.length > 0 && (
-                <p>Search result for {search}</p>
-            )}
-            <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                {(filteredStudents.length > 0
-                    ? filteredStudents
-                    : allStudent
-                ).map((student) => (
-                    <Card key={student.id} student={student} />
-                ))}
-            </div>
+                <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {filteredStudents.length === 0 && (
+                        <div>No students found Displaying all result</div>
+                    )}
+                    {(filteredStudents.length > 0
+                        ? filteredStudents
+                        : allStudent
+                    ).map((student) => (
+                        <Card key={student.id} student={student} />
+                    ))}
+                </div>
+            </section>
         </AuthenticatedLayout>
     );
 };
