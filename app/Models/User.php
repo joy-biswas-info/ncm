@@ -26,10 +26,12 @@ class User extends Authenticatable
         'ready_to_donet',
         'age',
         'weight',
+        'gender',
         'academic_year',
         'class_roll',
         'gurdian_name',
         'gurdian_phone_no',
+        'approved',
         'permanent_address', 'profile_photo'
     ];
 

@@ -1,8 +1,8 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AdminLayout from "@/Layouts/AdminLayout";
 import React from "react";
 
 const AdminDashboard = ({ auth, mustVerifyEmail, status }) => {
-    return <AuthenticatedLayout>Admin Dashboard</AuthenticatedLayout>;
+    return <AdminLayout user={auth.user}>Admin Dashboard</AdminLayout>;
 };
 
 export default AdminDashboard;

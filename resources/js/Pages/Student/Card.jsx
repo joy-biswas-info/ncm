@@ -14,7 +14,11 @@ const Card = (props) => {
                         className="w-full h-full object-center object-cover lg:w-full lg:h-full"
                     />
                 ) : (
-                    <img src="./logo.png" alt="" className="w-full" />
+                    <img
+                        src="./logo.png"
+                        alt=""
+                        className="w-full h-full object-center object-cover lg:w-full lg:h-full"
+                    />
                 )}
             </div>
             <div className="mt-4 flex justify-between">

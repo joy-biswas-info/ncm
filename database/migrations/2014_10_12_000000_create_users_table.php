@@ -25,12 +25,14 @@ return new class extends Migration
             $table->enum('ready_to_donet', ReadyToDonet::toArray())->default(ReadyToDonet::no);
             $table->string('age');
             $table->string('weight');
+            $table->string('gender');
             $table->string('profile_photo')->nullable();
             $table->string('academic_year');
             $table->string('class_roll');
             $table->string('gurdian_name');
             $table->string('gurdian_phone_no');
             $table->string('permanent_address');
+            $table->boolean('approved')->default(false);
             $table->enum('role', UserRole::toArray())->default(UserRole::user);
             $table->rememberToken();
             $table->timestamps();

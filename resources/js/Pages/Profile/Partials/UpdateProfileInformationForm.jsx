@@ -111,14 +111,14 @@ export default function UpdateProfileInformation({
                         required
                     >
                         <option value="">Select Blood Group</option>
-                        <option value="A">A+</option>
-                        <option value="AN">A-</option>
-                        <option value="B">B+</option>
-                        <option value="BN">B-</option>
-                        <option value="AB">AB+</option>
-                        <option value="ABN">AB-</option>
-                        <option value="O">O+</option>
-                        <option value="ON">O-</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
                     </select>
                     {errors.blood_group && (
                         <p className="mt-2 text-sm text-red-600">
@@ -132,7 +132,7 @@ export default function UpdateProfileInformation({
                         htmlFor="ready_to_donet"
                         className="block font-medium text-gray-700"
                     >
-                        Ready to Donate Blood
+                        Interested to Donate Blood
                     </label>
                     <select
                         id="ready_to_donet"

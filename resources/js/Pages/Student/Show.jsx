@@ -10,6 +10,7 @@ import {
     faWeight,
     faCheckCircle,
     faCancel,
+    faPerson,
 } from "@fortawesome/free-solid-svg-icons";
 
 const Show = ({ auth, mustVerifyEmail, status }) => {
@@ -23,6 +24,7 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
         class_roll,
         weight,
         age,
+        gender,
     } = student;
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -88,6 +90,16 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
                                 Age :{" "}
                                 <span className="font-semibold">{age}</span>{" "}
                                 years
+                            </p>
+                        </div>
+                        <div className="flex items-center gap-2 mb-2 md:text-xl">
+                            <FontAwesomeIcon
+                                icon={faPerson}
+                                className="text-green-600"
+                            />
+                            <p>
+                                Sex :{" "}
+                                <span className="font-semibold">{gender}</span>
                             </p>
                         </div>
                         <div className="mt-10">

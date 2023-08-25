@@ -7,6 +7,7 @@ const List = ({ auth, mustVerifyEmail, status }) => {
     const [search, setSearch] = useState("");
     const [filteredStudents, setFilteredStudents] = useState([]);
     const [blood_group, setBloodGroup] = useState([]);
+    const [bloodResult, setBloodResult] = useState(false);
     const allStudent = usePage().props.students;
 
     // Handeling Search
@@ -14,6 +15,7 @@ const List = ({ auth, mustVerifyEmail, status }) => {
         e.preventDefault();
     };
     useEffect(() => {
+        setBloodResult(true);
         const searchTerm = search.toLowerCase();
         const filtered = allStudent.filter(
             (student) =>
@@ -25,6 +27,7 @@ const List = ({ auth, mustVerifyEmail, status }) => {
     }, [search]);
 
     useEffect(() => {
+        setBloodResult(false);
         setSearch("");
         const filtered = allStudent.filter(
             (student) => !blood_group || student.blood_group === blood_group
@@ -37,7 +40,7 @@ const List = ({ auth, mustVerifyEmail, status }) => {
             <Head title="All Student" />
             <section className="container mx-auto my-6">
                 <div className="flex items-center-justify-center">
-                    <form>
+                    <form onSubmit={handleSearch}>
                         <select
                             name="blood_group"
                             value={blood_group}
@@ -45,7 +48,13 @@ const List = ({ auth, mustVerifyEmail, status }) => {
                         >
                             <option value="">Select Blood Group</option>
                             <option value="A+">A+</option>
+                            <option value="A-">A-</option>
                             <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
                         </select>
                     </form>
                     <form onSubmit={handleSearch}>
@@ -59,17 +68,32 @@ const List = ({ auth, mustVerifyEmail, status }) => {
                         {/* <button type="submit">Search</button> */}
                     </form>
                 </div>
-                {blood_group &&
-                    filteredStudents.length > 0 &&
-                    search === "" && (
-                        <h3 className="mt-4">
-                            Result Showing for {blood_group}
-                        </h3>
-                    )}
+
+                <div>
+                    {blood_group &&
+                        filteredStudents.length > 0 &&
+                        !bloodResult && (
+                            <h3 className="mt-4">
+                                Result Showing for {blood_group}
+                            </h3>
+                        )}
+                </div>
+                <div>
+                    {blood_group &&
+                        filteredStudents.length <= 0 &&
+                        !bloodResult && (
+                            <h3 className="mt-4">
+                                No Result for {blood_group} Showing All
+                            </h3>
+                        )}
+                </div>
 
                 <div className="mt-6 grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                    {filteredStudents.length === 0 && (
-                        <div>No students found Displaying all result</div>
+                    {filteredStudents.length === 0 && search && (
+                        <div>
+                            No students found for your search. <br /> Displaying
+                            all result
+                        </div>
                     )}
                     {(filteredStudents.length > 0
                         ? filteredStudents

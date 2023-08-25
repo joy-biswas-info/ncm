@@ -1,10 +1,12 @@
+import { faDroplet } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link, Head } from "@inertiajs/react";
 
 export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="Welcome to NCM" />
-            <div className="sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
+            <div className="sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-green-700 dark:bg-dots-lighter dark:bg-green-700 selection:bg-red-500 selection:text-white">
                 <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     {auth.user ? (
                         <Link
@@ -38,9 +40,13 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                 <span className="block xl:inline dark:text-white">
                                     Information to Enrich
                                 </span>{" "}
-                                <span className="block text-indigo-600 xl:inline">
+                                <span className="block text-white xl:inline">
                                     Your Exprience
                                 </span>
+                                <FontAwesomeIcon
+                                    icon={faDroplet}
+                                    className="mx-4 text-white"
+                                />
                             </h1>
                             <p className="mt-3 max-w-md mx-auto text-lg text-gray-500 sm:text-xl md:mt-5 md:max-w-3xl dark:text-white">
                                 Sign Up here and update your information so you
@@ -54,7 +60,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <Link
                                         href={route("logout")}
                                         method="post"
-                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-900 md:py-4 md:text-lg md:px-10 "
                                     >
                                         Log Out
                                     </Link>
@@ -64,7 +70,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <div className="rounded-md shadow">
                                         <Link
                                             href={route("register")}
-                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10"
+                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-900 md:py-4 md:text-lg md:px-10 "
                                         >
                                             Get started
                                         </Link>
@@ -72,7 +78,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                                         <Link
                                             href={route("login")}
-                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-gray-50 md:py-4 md:text-lg md:px-10"
+                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-900 md:py-4 md:text-lg md:px-10 "
                                         >
                                             Log In
                                         </Link>

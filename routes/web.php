@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Models\User;
@@ -40,12 +41,20 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::middleware('auth')->group(function () {
-    Route::get('/all-user-admin', function () {
+    Route::get('/all-user', function () {
         $users = User::get();
         return Inertia::render('Admin/AllUser', [
             'user' => $users
         ]);
-    });
+    })->name('all.user');
+
+
+    // Show Admin Dashboard 
+    Route::get('/admin-dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin-profile', function () {
+        return Inertia("Admin/AdminProfile");
+    })->name('admin.profile');
 });
+
 
 require __DIR__ . '/auth.php';
