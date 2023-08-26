@@ -6,7 +6,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
     return (
         <>
             <Head title="Welcome to NCM" />
-            <div className="sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-green-700 dark:bg-dots-lighter dark:bg-green-700 selection:bg-red-500 selection:text-white">
+            <div className="sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-green-700 dark:bg-dots-lighter dark:bg-gray-700 selection:bg-red-500 selection:text-white">
                 <div className="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     {auth.user ? (
                         <Link
@@ -58,11 +58,16 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                             {auth.user ? (
                                 <div className="rounded-md shadow mt-5">
                                     <Link
-                                        href={route("logout")}
-                                        method="post"
-                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-900 md:py-4 md:text-lg md:px-10 "
+                                        href={route("dashboard")}
+                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-500 hover:text-white font-semibold my-2 bg-white hover:bg-green-500 md:py-4 md:text-lg md:px-10 "
                                     >
-                                        Log Out
+                                        Dashboard
+                                    </Link>
+                                    <Link
+                                        href={route("all.student")}
+                                        className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-500 hover:text-white font-semibold my-2 bg-white hover:bg-green-500 md:py-4 md:text-lg md:px-10 "
+                                    >
+                                        Studens
                                     </Link>
                                 </div>
                             ) : (
@@ -70,7 +75,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <div className="rounded-md shadow">
                                         <Link
                                             href={route("register")}
-                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-900 md:py-4 md:text-lg md:px-10 "
+                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-500 md:py-4 md:text-lg md:px-10 "
                                         >
                                             Get started
                                         </Link>
@@ -78,7 +83,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                                     <div className="mt-3 rounded-md shadow sm:mt-0 sm:ml-3">
                                         <Link
                                             href={route("login")}
-                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-900 md:py-4 md:text-lg md:px-10 "
+                                            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base rounded-md text-green-700 hover:text-white font-semibold bg-white hover:bg-green-500 md:py-4 md:text-lg md:px-10 "
                                         >
                                             Log In
                                         </Link>
@@ -90,7 +95,7 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                     <div className="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
                         <img
                             className="absolute inset-0 w-full h-full object-cover"
-                            src="https://images.unsplash.com/photo-1520333789090-1afc82db536a?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2102&q=80"
+                            src="./banner.jpg"
                             alt=""
                         />
                     </div>

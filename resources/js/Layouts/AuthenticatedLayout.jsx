@@ -4,6 +4,7 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+import Footer from "./Footer";
 
 export default function Authenticated({ user, header, children }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -26,7 +27,7 @@ export default function Authenticated({ user, header, children }) {
                                     href={route("all.student")}
                                     active={route().current("all.student")}
                                 >
-                                    All Student
+                                    Student
                                 </NavLink>
                             </div>
                             <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
@@ -185,9 +186,10 @@ export default function Authenticated({ user, header, children }) {
                 </div>
             </nav>
 
-            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-24">
                 {children}
             </main>
+            <Footer />
         </div>
     );
 }

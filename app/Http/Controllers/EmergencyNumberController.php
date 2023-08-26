@@ -23,6 +23,7 @@ class EmergencyNumberController extends Controller
         return Inertia('Admin/CreateEmergencyContact');
     }
 
+    // Add Emergency Contact 
     public function store(Request $request): RedirectResponse
     {
         // Validate the incoming data
@@ -39,7 +40,7 @@ class EmergencyNumberController extends Controller
 
         // Upload and store the image
         if ($request->hasFile('logo')) {
-            $logoPath = $request->file('logo')->store('logos', 'public');
+            $logoPath = $request->file('logo')->store('logos/emergency', 'public');
         }
 
         // Create and store the new emergency contact
