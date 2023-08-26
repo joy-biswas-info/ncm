@@ -27,6 +27,8 @@ class TeacherController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+
+
         $validator = Validator::make($request->all(), [
             'contact_number' => 'required|string',
             'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048', // Adjust max size as needed
@@ -46,8 +48,9 @@ class TeacherController extends Controller
             'name' => $request->input(('name')),
             'job_title' => $request->input('job_title'),
             'contact_number' => $request->input('contact_number'),
-            'profile_photo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'profile_photo' => $profilePhotoPath,
         ]);
+
 
         $teacherInfo->save();
         return redirect()->route('add.teacher', [
