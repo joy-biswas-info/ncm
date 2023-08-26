@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\RegisteredUserController;
+use App\Http\Controllers\EmergencyNumberController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\StudentController;
 use App\Models\User;
@@ -41,7 +42,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/all-student/{student}', [StudentController::class, 'show'])->name('single.student');
 });
 
-Route::middleware('auth', 'adminallowed')->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/all-user', function () {
         $users = User::get();
         return Inertia::render('Admin/AllUser', [
@@ -58,6 +59,8 @@ Route::middleware('auth', 'adminallowed')->group(function () {
     Route::patch('/approve-user/{userId}', [AdminController::class, 'approveUser'])->name('approve.user');
     // Get a single user details for admin 
     Route::get('/users/{user}', [AdminController::class, 'show'])->name('single.user');
+    Route::get('add/emergency-contact-number', [EmergencyNumberController::class, 'showAddEmergencyContact'])->name('add.emergencyContact');
+    Route::post('add/emergency-contact-number', [EmergencyNumberController::class, 'store'])->name('add.emergencyContact');
 });
 
 
