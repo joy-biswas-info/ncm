@@ -46,7 +46,7 @@ const List = ({ auth, mustVerifyEmail, status }) => {
                             value={blood_group}
                             onChange={(e) => setBloodGroup(e.target.value)}
                         >
-                            <option value="">Select Blood Group</option>
+                            <option value=" ">Select Blood Group</option>
                             <option value="A+">A+</option>
                             <option value="A-">A-</option>
                             <option value="B+">B+</option>
