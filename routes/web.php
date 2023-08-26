@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::get('/all-student', [StudentController::class, 'index'])->name('all.student');
     Route::get('/all-student/{student}', [StudentController::class, 'show'])->name('single.student');
+    // Emergency Contact 
+    Route::get('/emergency-number', [EmergencyNumberController::class, 'index'])->name('emergency.number');
 });
 
 Route::middleware('auth')->group(function () {

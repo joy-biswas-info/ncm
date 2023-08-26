@@ -11,6 +11,7 @@ class EmergencyContact extends Model
     protected $fillable = [
         'contact_number',
         'title',
+        'order',
         'logo',
         'locations',
         'hide'

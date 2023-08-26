@@ -6,6 +6,7 @@ export default function NavLink({
     children,
     ...props
 }) {
+    console.log(active);
     return (
         <Link
             {...props}

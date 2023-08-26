@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('title');
+            $table->string('order')->nullable();
             $table->string('contact_number');
             $table->boolean('hide')->default(false);
             $table->string('logo')->nullable();
