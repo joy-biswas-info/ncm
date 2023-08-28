@@ -133,6 +133,12 @@ export default function UpdateProfileInformation({
                 </div>
 
                 <div className="mt-1">
+                    <label
+                        htmlFor="blood_group"
+                        className="block font-medium text-gray-700"
+                    >
+                        Interested to Donate Blood
+                    </label>
                     <label className="inline-flex items-center">
                         <input
                             type="radio"

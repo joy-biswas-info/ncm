@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import GuestLayout from "@/Layouts/GuestLayout";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
@@ -25,6 +25,7 @@ export default function Register() {
         password_confirmation: "",
         profile_photo: "",
     });
+    const [inputValue, setInputValue] = useState(data.academic_year);
 
     useEffect(() => {
         return () => {
@@ -32,6 +33,32 @@ export default function Register() {
         };
     }, []);
 
+    const handleChange = (e) => {
+        setInputValue(e.target.value);
+    };
+
+    const handleBlur = () => {
+        if (isValidInput(inputValue)) {
+            setFormattedValue(formatInput(inputValue));
+            setData("academic_year", inputValue);
+        }
+    };
+
+    const isValidInput = (input) => {
+        const pattern = /^\d{4}-\d{4}$/;
+        return pattern.test(input);
+    };
+
+    const formatInput = (input) => {
+        if (isValidInput(input)) {
+            const yearArray = input.split("-");
+            return `${yearArray[0]}-${yearArray[1]}`;
+        }
+        return input;
+    };
+    const [formattedValue, setFormattedValue] = useState(
+        formatInput(inputValue)
+    );
     const submit = (e) => {
         e.preventDefault();
         post(route("register"));
@@ -242,21 +269,25 @@ export default function Register() {
                         id="academic_year"
                         type="text"
                         name="academic_year"
-                        value={data.academic_year}
+                        value={formatInput(inputValue)}
                         className="mt-1 block w-full"
-                        autoComplete="academic_year"
+                        autoComplete="off"
                         placeholder="YYYY-YYYY"
-                        onChange={(e) =>
-                            setData("academic_year", e.target.value)
-                        }
+                        onChange={handleChange}
+                        onBlur={handleBlur} // Call this when input field loses focus
                         required
                     />
 
                     <InputError
-                        message={errors.academic_year}
+                        message={
+                            isValidInput(inputValue)
+                                ? errors.academic_year
+                                : "Invalid academic year format"
+                        }
                         className="mt-2"
                     />
                 </div>
+
                 <div className="mt-4">
                     <InputLabel htmlFor="class_roll" value="Class Roll" />
 

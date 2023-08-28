@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/all-student/{student}', [StudentController::class, 'show'])->name('single.student');
     // Emergency Contact 
     Route::get('/emergency-number', [EmergencyNumberController::class, 'index'])->name('emergency.number');
-    Route::get('teacher', [TeacherController::class, 'index'])->name('teacher');
+    Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
 });
 
 Route::middleware('auth')->group(function () {

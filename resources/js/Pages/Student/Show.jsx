@@ -25,6 +25,7 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
         weight,
         age,
         gender,
+        ready_to_donet,
     } = student;
     return (
         <AuthenticatedLayout user={auth.user}>
@@ -37,7 +38,7 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
                             src={`/storage/${profile_photo}`}
                             alt=""
                             className=" w-full h-full"
-                            style={{ width: "500px" }}
+                            style={{ width: "300px" }}
                         />
                     </div>
                     <div className="grid-2">
@@ -122,6 +123,24 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
                                             className="text-red-600"
                                         />
                                         <p>Not Fit For Donate Blood</p>
+                                    </div>
+                                )}
+                                {ready_to_donet == "Yes" ? (
+                                    <div className="flex items-center gap-2 mb-2 md:text-xl">
+                                        <FontAwesomeIcon
+                                            icon={faCheckCircle}
+                                            className="text-green-500"
+                                        />
+
+                                        <h3>I want to donate Blood</h3>
+                                    </div>
+                                ) : (
+                                    <div className="flex items-center gap-2 mb-2 md:text-xl">
+                                        <FontAwesomeIcon
+                                            icon={faCancel}
+                                            className="text-red-600"
+                                        />
+                                        <p>I don't want to donate blood</p>
                                     </div>
                                 )}
                             </div>
