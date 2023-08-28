@@ -169,8 +169,8 @@ export default function Register() {
                                 type="radio"
                                 className="form-radio"
                                 name="ready_to_donet"
-                                value="yes"
-                                checked={data.ready_to_donet === "yes"}
+                                value="Yes"
+                                checked={data.ready_to_donet === "Yes"}
                                 onChange={(e) =>
                                     setData("ready_to_donet", e.target.value)
                                 }
@@ -182,8 +182,8 @@ export default function Register() {
                                 type="radio"
                                 className="form-radio"
                                 name="ready_to_donet"
-                                value="no"
-                                checked={data.ready_to_donet === "no"}
+                                value="No"
+                                checked={data.ready_to_donet === "No"}
                                 onChange={(e) =>
                                     setData("ready_to_donet", e.target.value)
                                 }

@@ -4,6 +4,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
 import { Link, useForm, usePage } from "@inertiajs/react";
 import { Transition } from "@headlessui/react";
+import { useEffect, useState } from "react";
 
 export default function UpdateProfileInformation({
     mustVerifyEmail,
@@ -45,6 +46,10 @@ export default function UpdateProfileInformation({
                     Update your account's profile information and email address.
                 </p>
             </header>
+
+            {status && setTimeout(300) && (
+                <p className="p-2 bg-green-500 text-white">{status}</p>
+            )}
 
             <form onSubmit={submit} className="mt-6 space-y-6">
                 <div>
@@ -91,7 +96,7 @@ export default function UpdateProfileInformation({
                         autoComplete="phone"
                     />
 
-                    <InputError className="mt-2" message={errors.email} />
+                    <InputError className="mt-2" message={errors.phone} />
                 </div>
 
                 <div className="mt-4">
@@ -127,33 +132,39 @@ export default function UpdateProfileInformation({
                     )}
                 </div>
 
-                <div className="mt-4">
-                    <label
-                        htmlFor="ready_to_donet"
-                        className="block font-medium text-gray-700"
-                    >
-                        Interested to Donate Blood
+                <div className="mt-1">
+                    <label className="inline-flex items-center">
+                        <input
+                            type="radio"
+                            className="form-radio"
+                            name="ready_to_donet"
+                            value="Yes"
+                            checked={data.ready_to_donet === "Yes"}
+                            onChange={(e) =>
+                                setData("ready_to_donet", e.target.value)
+                            }
+                        />
+                        <span className="ml-2">Yes</span>
                     </label>
-                    <select
-                        id="ready_to_donet"
-                        name="ready_to_donet"
-                        value={data.ready_to_donet}
-                        className="mt-1 block w-full"
-                        autoComplete="ready_to_donet"
-                        onChange={(e) =>
-                            setData("ready_to_donet", e.target.value)
-                        }
-                        required
-                    >
-                        <option value="no">No</option>
-                        <option value="yes">Yes</option>
-                    </select>
-                    {errors.ready_to_donet && (
-                        <p className="mt-2 text-sm text-red-600">
-                            {errors.ready_to_donet}
-                        </p>
-                    )}
+                    <label className="inline-flex items-center ml-6">
+                        <input
+                            type="radio"
+                            className="form-radio"
+                            name="ready_to_donet"
+                            value="No"
+                            checked={data.ready_to_donet === "No"}
+                            onChange={(e) =>
+                                setData("ready_to_donet", e.target.value)
+                            }
+                        />
+                        <span className="ml-2">No</span>
+                    </label>
                 </div>
+                {errors.ready_to_donet && (
+                    <p className="mt-2 text-sm text-red-600">
+                        {errors.ready_to_donet}
+                    </p>
+                )}
 
                 <div className="mt-4">
                     <InputLabel htmlFor="age" value="Your Age" />

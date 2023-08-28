@@ -1,5 +1,5 @@
 import AdminLayout from "@/Layouts/AdminLayout";
-import { usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import React from "react";
 
 const AdminDashboard = ({ auth, mustVerifyEmail, status }) => {
@@ -9,6 +9,7 @@ const AdminDashboard = ({ auth, mustVerifyEmail, status }) => {
 
     return (
         <AdminLayout user={auth.user}>
+            <Head title="Admin Dashboard" />
             <div className="flex gap-4">
                 <div className="container mx-auto my-10 bg-white w-1/2 p-24 shadow-md shadow-gray-200 rounded-md">
                     <h2 className="text-gray-600 font-bold text-2xl text-center">

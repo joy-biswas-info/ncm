@@ -17,7 +17,7 @@ export default function AdminLayout({ user, header, children }) {
         <>
             {user.role === "Admin" && (
                 <div className="min-h-screen bg-gray-800 text-white grid grid-cols-[200px_minmax(900px,_1fr)]">
-                    <div className="bg-white row-span-">
+                    <div className="bg-gray-600 row-span-">
                         <ApplicationLogo />
                         <nav className=" flex flex-col justify-center px-4">
                             <AdminLink

@@ -10,10 +10,10 @@ export default function AdminLink({
         <Link
             {...props}
             className={
-                "inline-flex items-center align-middle px-1 pt-2 mt-2 text-xl font-medium leading-5 transition duration-150 ease-in-out focus:outline-none " +
+                "inline-flex items-center align-middle px-1 pt-2 mt-2 leading-5 transition duration-250 ease-in-out focus:outline-none " +
                 (active
-                    ? "border-green-400 text-gray-700 focus:border-green-600 font-semibold "
-                    : "border-transparent text-green-600 hover:text-green-700 hover:border-gray-600 focus:text-gray-700 focus:border-gray-300 font-semibold") +
+                    ? "text-green-500 focus:border-green-600  font-semibold text-xl transition duration-250 ease-in-out "
+                    : "border-transparent text-gray-200 hover:text-green-200 hover:border-gray-600 focus:text-gray-700 focus:border-gray-300 font-semibold ") +
                 className
             }
         >
