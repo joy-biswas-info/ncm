@@ -16,7 +16,6 @@ const AddTeacher = ({ auth, errors }) => {
         setData("profile_photo", file);
         setLogoPreview(URL.createObjectURL(file));
     };
-    console.log(data.profile_photo);
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
