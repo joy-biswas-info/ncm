@@ -56,7 +56,7 @@ export default function Dashboard({ auth }) {
                         <img
                             src={
                                 profile_photo
-                                    ? `${profile_photo}`
+                                    ? `/storage/${profile_photo}`
                                     : "./logo.png"
                             }
                             alt=""
