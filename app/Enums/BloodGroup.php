@@ -9,7 +9,7 @@ enum BloodGroup: string
     const AN = "A-";
     const B = "B+";
     const BN = "B-";
-    const AB = "AB";
+    const AB = "AB+";
     const ABN = "AB-";
     const O = "O+";
     const ON = "O-";
