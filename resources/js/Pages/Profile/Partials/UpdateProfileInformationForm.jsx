@@ -23,9 +23,9 @@ export default function UpdateProfileInformation({
             class_roll: user.class_roll,
             blood_group: user.blood_group,
             ready_to_donet: user.ready_to_donet,
-            academic_year: user.academic_year,
-            gurdian_name: user.gurdian_name,
-            gurdian_phone_no: user.gurdian_phone_no,
+            academic_session: user.academic_session,
+            job_location: user.job_location,
+            job_title: user.job_title,
             permanent_address: user.permanent_address,
         });
 
@@ -206,25 +206,25 @@ export default function UpdateProfileInformation({
                 </div>
                 <div className="mt-4">
                     <InputLabel
-                        htmlFor="academic_year"
+                        htmlFor="academic_session"
                         value="Your Academic Year"
                     />
 
                     <TextInput
-                        id="academic_year"
+                        id="academic_session"
                         type="text"
-                        name="academic_year"
-                        value={data.academic_year}
+                        name="academic_session"
+                        value={data.academic_session}
                         className="mt-1 block w-full"
-                        autoComplete="academic_year"
+                        autoComplete="academic_session"
                         onChange={(e) =>
-                            setData("academic_year", e.target.value)
+                            setData("academic_session", e.target.value)
                         }
                         required
                     />
 
                     <InputError
-                        message={errors.academic_year}
+                        message={errors.academic_session}
                         className="mt-2"
                     />
                 </div>
@@ -245,49 +245,44 @@ export default function UpdateProfileInformation({
                     <InputError message={errors.class_roll} className="mt-2" />
                 </div>
                 <div className="mt-4">
-                    <InputLabel htmlFor="gurdian_name" value="Gurdian name" />
+                    <InputLabel htmlFor="job_location" value="Gurdian name" />
 
                     <TextInput
-                        id="gurdian_name"
+                        id="job_location"
                         type="text"
-                        name="gurdian_name"
-                        value={data.gurdian_name}
+                        name="job_location"
+                        value={data.job_location}
                         className="mt-1 block w-full"
-                        autoComplete="gurdian_name"
+                        autoComplete="job_location"
                         onChange={(e) =>
-                            setData("gurdian_name", e.target.value)
+                            setData("job_location", e.target.value)
                         }
                         required
                     />
 
                     <InputError
-                        message={errors.gurdian_name}
+                        message={errors.job_location}
                         className="mt-2"
                     />
                 </div>
                 <div className="mt-4">
                     <InputLabel
-                        htmlFor="gurdian_phone_no"
+                        htmlFor="job_title"
                         value="Gurdian Phone Number"
                     />
 
                     <TextInput
-                        id="gurdian_phone_no"
+                        id="job_title"
                         type="text"
-                        name="gurdian_phone_no"
-                        value={data.gurdian_phone_no}
+                        name="job_title"
+                        value={data.job_title}
                         className="mt-1 block w-full"
-                        autoComplete="gurdian_phone_no"
-                        onChange={(e) =>
-                            setData("gurdian_phone_no", e.target.value)
-                        }
+                        autoComplete="job_title"
+                        onChange={(e) => setData("job_title", e.target.value)}
                         required
                     />
 
-                    <InputError
-                        message={errors.gurdian_phone_no}
-                        className="mt-2"
-                    />
+                    <InputError message={errors.job_title} className="mt-2" />
                 </div>
                 <div className="mt-4">
                     <InputLabel

@@ -16,16 +16,18 @@ export default function Register() {
         age: "",
         gender: "",
         weight: "",
-        academic_year: "",
+        academic_session: "",
         class_roll: "",
-        gurdian_name: "",
-        gurdian_phone_no: "",
+        job_location: "",
+        job_title: "",
         permanent_address: "",
         password: "",
         password_confirmation: "",
         profile_photo: "",
+        present_address: "",
+        batch_no: "",
     });
-    const [inputValue, setInputValue] = useState(data.academic_year);
+    const [inputValue, setInputValue] = useState(data.academic_session);
 
     useEffect(() => {
         return () => {
@@ -40,7 +42,7 @@ export default function Register() {
     const handleBlur = () => {
         if (isValidInput(inputValue)) {
             setFormattedValue(formatInput(inputValue));
-            setData("academic_year", inputValue);
+            setData("academic_session", inputValue);
         }
     };
 
@@ -63,319 +65,327 @@ export default function Register() {
         e.preventDefault();
         post(route("register"));
     };
-
+    console.log(data);
     return (
         <GuestLayout>
             <Head title="Register" />
 
             <form onSubmit={submit}>
-                <div>
-                    <InputLabel htmlFor="name" value="Name" />
+                {/* Personal Information  */}
 
-                    <TextInput
-                        id="name"
-                        name="name"
-                        value={data.name}
-                        className="mt-1 block w-full"
-                        autoComplete="name"
-                        isFocused={true}
-                        onChange={(e) => setData("name", e.target.value)}
-                        placeholder="Your Name"
-                        required
-                    />
+                <div className="presonal-information border border-green-500 p-2 my-2 rounded">
+                    <h2 className="text-xl font-semibold my-2">
+                        Personal Information
+                    </h2>
+                    <div>
+                        <InputLabel htmlFor="name" value="Name" />
 
-                    <InputError message={errors.name} className="mt-2" />
-                </div>
+                        <TextInput
+                            id="name"
+                            name="name"
+                            value={data.name}
+                            className="mt-1 block w-full"
+                            autoComplete="name"
+                            isFocused={true}
+                            onChange={(e) => setData("name", e.target.value)}
+                            placeholder="Your Name"
+                            required
+                        />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="email" value="Email" />
-
-                    <TextInput
-                        id="email"
-                        type="email"
-                        name="email"
-                        value={data.email}
-                        className="mt-1 block w-full"
-                        autoComplete="username"
-                        onChange={(e) => setData("email", e.target.value)}
-                        required
-                        placeholder="Your Email"
-                    />
-
-                    <InputError message={errors.email} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <InputLabel htmlFor="phone" value="Phone Number" />
-
-                    <TextInput
-                        id="phone"
-                        type="text"
-                        name="phone"
-                        value={data.phone}
-                        className="mt-1 block w-full"
-                        autoComplete="phone"
-                        onChange={(e) => setData("phone", e.target.value)}
-                        required
-                        placeholder="Your Phone Number"
-                    />
-
-                    <InputError message={errors.phone} className="mt-2" />
-                </div>
-
-                <div className="mt-4">
-                    <label
-                        htmlFor="blood_group"
-                        className="block font-medium text-gray-700"
-                    >
-                        Blood Group
-                    </label>
-                    <select
-                        id="blood_group"
-                        name="blood_group"
-                        value={data.blood_group}
-                        className="mt-1 block w-full"
-                        autoComplete="blood_group"
-                        onChange={(e) => setData("blood_group", e.target.value)}
-                        required
-                    >
-                        <option value="">Select Blood Group</option>
-                        <option value="A+">A+</option>
-                        <option value="A-">A-</option>
-                        <option value="B+">B+</option>
-                        <option value="B-">B-</option>
-                        <option value="AB+">AB+</option>
-                        <option value="AB-">AB-</option>
-                        <option value="O+">O+</option>
-                        <option value="O-">O-</option>
-                    </select>
-                    {errors.blood_group && (
-                        <p className="mt-2 text-sm text-red-600">
-                            {errors.blood_group}
-                        </p>
-                    )}
-                </div>
-                <div className="mt-4">
-                    <label
-                        htmlFor="gender"
-                        className="block font-medium text-gray-700"
-                    >
-                        Gender
-                    </label>
-                    <select
-                        id="gender"
-                        name="gender"
-                        value={data.gender}
-                        className="mt-1 block w-full"
-                        autoComplete="gender"
-                        onChange={(e) => setData("gender", e.target.value)}
-                        required
-                    >
-                        <option value="">Select Gender</option>
-                        <option value="Male">Male</option>
-                        <option value="Femel">Female</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    {errors.gender && (
-                        <p className="mt-2 text-sm text-red-600">
-                            {errors.gender}
-                        </p>
-                    )}
-                </div>
-
-                <div className="mt-4">
-                    <label
-                        htmlFor="ready_to_donet"
-                        className="block font-medium text-gray-700"
-                    >
-                        Interested to Donate Blood
-                    </label>
-                    <div className="mt-1">
-                        <label className="inline-flex items-center">
-                            <input
-                                type="radio"
-                                className="form-radio"
-                                name="ready_to_donet"
-                                value="Yes"
-                                checked={data.ready_to_donet === "Yes"}
-                                onChange={(e) =>
-                                    setData("ready_to_donet", e.target.value)
-                                }
-                            />
-                            <span className="ml-2">Yes</span>
-                        </label>
-                        <label className="inline-flex items-center ml-6">
-                            <input
-                                type="radio"
-                                className="form-radio"
-                                name="ready_to_donet"
-                                value="No"
-                                checked={data.ready_to_donet === "No"}
-                                onChange={(e) =>
-                                    setData("ready_to_donet", e.target.value)
-                                }
-                            />
-                            <span className="ml-2">No</span>
-                        </label>
+                        <InputError message={errors.name} className="mt-2" />
                     </div>
-                    {errors.ready_to_donet && (
-                        <p className="mt-2 text-sm text-red-600">
-                            {errors.ready_to_donet}
-                        </p>
-                    )}
+                    <div className="mt-4">
+                        <InputLabel htmlFor="email" value="Email" />
+
+                        <TextInput
+                            id="email"
+                            type="email"
+                            name="email"
+                            value={data.email}
+                            className="mt-1 block w-full"
+                            autoComplete="username"
+                            onChange={(e) => setData("email", e.target.value)}
+                            required
+                            placeholder="Your Email"
+                        />
+
+                        <InputError message={errors.email} className="mt-2" />
+                    </div>
+                    <div className="mt-4">
+                        <InputLabel htmlFor="phone" value="Phone Number" />
+
+                        <TextInput
+                            id="phone"
+                            type="text"
+                            name="phone"
+                            value={data.phone}
+                            className="mt-1 block w-full"
+                            autoComplete="phone"
+                            onChange={(e) => setData("phone", e.target.value)}
+                            required
+                            placeholder="Your Phone Number"
+                        />
+
+                        <InputError message={errors.phone} className="mt-2" />
+                    </div>
+                    <div className="mt-4">
+                        <label
+                            htmlFor="blood_group"
+                            className="block font-medium text-gray-700"
+                        >
+                            Blood Group
+                        </label>
+                        <select
+                            id="blood_group"
+                            name="blood_group"
+                            value={data.blood_group}
+                            className="mt-1 block w-full"
+                            autoComplete="blood_group"
+                            onChange={(e) =>
+                                setData("blood_group", e.target.value)
+                            }
+                            required
+                        >
+                            <option value="">Select Blood Group</option>
+                            <option value="A+">A+</option>
+                            <option value="A-">A-</option>
+                            <option value="B+">B+</option>
+                            <option value="B-">B-</option>
+                            <option value="AB+">AB+</option>
+                            <option value="AB-">AB-</option>
+                            <option value="O+">O+</option>
+                            <option value="O-">O-</option>
+                        </select>
+                        {errors.blood_group && (
+                            <p className="mt-2 text-sm text-red-600">
+                                {errors.blood_group}
+                            </p>
+                        )}
+                    </div>
+                    <div className="mt-4">
+                        <label
+                            htmlFor="gender"
+                            className="block font-medium text-gray-700"
+                        >
+                            Gender
+                        </label>
+                        <select
+                            id="gender"
+                            name="gender"
+                            value={data.gender}
+                            className="mt-1 block w-full"
+                            autoComplete="gender"
+                            onChange={(e) => setData("gender", e.target.value)}
+                            required
+                        >
+                            <option value="">Select Gender</option>
+                            <option value="Male">Male</option>
+                            <option value="Femel">Female</option>
+                            <option value="Other">Other</option>
+                        </select>
+                        {errors.gender && (
+                            <p className="mt-2 text-sm text-red-600">
+                                {errors.gender}
+                            </p>
+                        )}
+                    </div>
+
+                    <div className="mt-4">
+                        <label
+                            htmlFor="ready_to_donet"
+                            className="block font-medium text-gray-700"
+                        >
+                            Interested to Donate Blood
+                        </label>
+                        <div className="mt-1">
+                            <label className="inline-flex items-center">
+                                <input
+                                    type="radio"
+                                    className="form-radio"
+                                    name="ready_to_donet"
+                                    value="Yes"
+                                    checked={data.ready_to_donet === "Yes"}
+                                    onChange={(e) =>
+                                        setData(
+                                            "ready_to_donet",
+                                            e.target.value
+                                        )
+                                    }
+                                />
+                                <span className="ml-2">Yes</span>
+                            </label>
+                            <label className="inline-flex items-center ml-6">
+                                <input
+                                    type="radio"
+                                    className="form-radio"
+                                    name="ready_to_donet"
+                                    value="No"
+                                    checked={data.ready_to_donet === "No"}
+                                    onChange={(e) =>
+                                        setData(
+                                            "ready_to_donet",
+                                            e.target.value
+                                        )
+                                    }
+                                />
+                                <span className="ml-2">No</span>
+                            </label>
+                        </div>
+                        {errors.ready_to_donet && (
+                            <p className="mt-2 text-sm text-red-600">
+                                {errors.ready_to_donet}
+                            </p>
+                        )}
+                    </div>
+
+                    <div className="mt-4">
+                        <InputLabel htmlFor="age" value="Your Age" />
+
+                        <TextInput
+                            id="age"
+                            type="number"
+                            name="age"
+                            value={data.age}
+                            className="mt-1 block w-full"
+                            autoComplete="age"
+                            onChange={(e) => setData("age", e.target.value)}
+                            required
+                            placeholder="Your Age"
+                            min="15"
+                        />
+
+                        <InputError message={errors.age} className="mt-2" />
+                    </div>
+                    <div className="mt-4">
+                        <InputLabel
+                            htmlFor="weight"
+                            value="Your Weight (in kg)"
+                        />
+
+                        <TextInput
+                            id="weight"
+                            type="number"
+                            name="weight"
+                            value={data.weight}
+                            className="mt-1 block w-full"
+                            autoComplete="weight"
+                            onChange={(e) => setData("weight", e.target.value)}
+                            placeholder=" Your Weight Example 52"
+                            min="20"
+                            required
+                        />
+
+                        <InputError message={errors.weight} className="mt-2" />
+                    </div>
+                    <div className="mt-4">
+                        <InputLabel
+                            htmlFor="permanent_address"
+                            value="Permanent Address"
+                        />
+
+                        <TextInput
+                            id="permanent_address"
+                            type="text"
+                            name="permanent_address"
+                            value={data.permanent_address}
+                            className="mt-1 block w-full"
+                            autoComplete="permanent_address"
+                            onChange={(e) =>
+                                setData("permanent_address", e.target.value)
+                            }
+                            placeholder="Your Permanent Address"
+                            required
+                        />
+
+                        <InputError
+                            message={errors.permanent_address}
+                            className="mt-2"
+                        />
+                    </div>
                 </div>
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="age" value="Your Age" />
+                {/* Academic Information  */}
+                <div className="academic-information border border-green-500 p-2 my-2 rounded">
+                    <h2 className="text-xl font-semibold my-2">
+                        Academic Information
+                    </h2>
+                    <div className="mt-4">
+                        <InputLabel
+                            htmlFor="academic_session"
+                            value="Your Academic Session"
+                        />
 
-                    <TextInput
-                        id="age"
-                        type="number"
-                        name="age"
-                        value={data.age}
-                        className="mt-1 block w-full"
-                        autoComplete="age"
-                        onChange={(e) => setData("age", e.target.value)}
-                        required
-                        placeholder="Your Age"
-                    />
+                        <TextInput
+                            id="academic_session"
+                            type="text"
+                            name="academic_session"
+                            value={formatInput(inputValue)}
+                            className="mt-1 block w-full"
+                            autoComplete="off"
+                            placeholder="YYYY-YYYY"
+                            onChange={handleChange}
+                            onBlur={handleBlur}
+                            required
+                        />
 
-                    <InputError message={errors.age} className="mt-2" />
-                </div>
-                <div className="mt-4">
-                    <InputLabel htmlFor="weight" value="Your Weight (in kg)" />
+                        <InputError
+                            message={
+                                isValidInput(inputValue)
+                                    ? errors.academic_session
+                                    : "Invalid academic year format"
+                            }
+                            className="mt-2"
+                        />
+                    </div>
 
-                    <TextInput
-                        id="weight"
-                        type="number"
-                        name="weight"
-                        value={data.weight}
-                        className="mt-1 block w-full"
-                        autoComplete="weight"
-                        onChange={(e) => setData("weight", e.target.value)}
-                        placeholder=" Your Weight Example 52"
-                        required
-                    />
+                    <div className="mt-4">
+                        <InputLabel htmlFor="class_roll" value="Class Roll" />
 
-                    <InputError message={errors.weight} className="mt-2" />
-                </div>
-                <div className="mt-4">
-                    <InputLabel
-                        htmlFor="academic_year"
-                        value="Your Academic Year"
-                    />
+                        <TextInput
+                            id="class_roll"
+                            type="number"
+                            name="class_roll"
+                            value={data.class_roll}
+                            className="mt-1 block w-full"
+                            autoComplete="class_roll"
+                            onChange={(e) =>
+                                setData("class_roll", e.target.value)
+                            }
+                            placeholder="Your class roll"
+                            min="1"
+                            max="100"
+                            required
+                        />
 
-                    <TextInput
-                        id="academic_year"
-                        type="text"
-                        name="academic_year"
-                        value={formatInput(inputValue)}
-                        className="mt-1 block w-full"
-                        autoComplete="off"
-                        placeholder="YYYY-YYYY"
-                        onChange={handleChange}
-                        onBlur={handleBlur} // Call this when input field loses focus
-                        required
-                    />
+                        <InputError
+                            message={errors.class_roll}
+                            className="mt-2"
+                        />
+                    </div>
 
-                    <InputError
-                        message={
-                            isValidInput(inputValue)
-                                ? errors.academic_year
-                                : "Invalid academic year format"
-                        }
-                        className="mt-2"
-                    />
-                </div>
+                    <div className="mt-4">
+                        <InputLabel htmlFor="batch_no" value="Your Batch No" />
 
-                <div className="mt-4">
-                    <InputLabel htmlFor="class_roll" value="Class Roll" />
+                        <TextInput
+                            id="batch_no"
+                            type="number"
+                            name="batch_no"
+                            value={data.batch_no}
+                            className="mt-1 block w-full"
+                            autoComplete="batch_no"
+                            onChange={(e) =>
+                                setData("batch_no", e.target.value)
+                            }
+                            placeholder="Your Batch No e.g. 1"
+                            min="1"
+                            required
+                        />
 
-                    <TextInput
-                        id="class_roll"
-                        type="number"
-                        name="class_roll"
-                        value={data.class_roll}
-                        className="mt-1 block w-full"
-                        autoComplete="class_roll"
-                        onChange={(e) => setData("class_roll", e.target.value)}
-                        placeholder="Your class roll"
-                        required
-                    />
-
-                    <InputError message={errors.class_roll} className="mt-2" />
-                </div>
-                <div className="mt-4">
-                    <InputLabel htmlFor="gurdian_name" value="Gurdian name" />
-
-                    <TextInput
-                        id="gurdian_name"
-                        type="text"
-                        name="gurdian_name"
-                        value={data.gurdian_name}
-                        className="mt-1 block w-full"
-                        autoComplete="gurdian_name"
-                        onChange={(e) =>
-                            setData("gurdian_name", e.target.value)
-                        }
-                        placeholder="Father's/Mother's Name"
-                        required
-                    />
-
-                    <InputError
-                        message={errors.gurdian_name}
-                        className="mt-2"
-                    />
-                </div>
-                <div className="mt-4">
-                    <InputLabel
-                        htmlFor="gurdian_phone_no"
-                        value="Gurdian Phone Number"
-                    />
-
-                    <TextInput
-                        id="gurdian_phone_no"
-                        type="text"
-                        name="gurdian_phone_no"
-                        value={data.gurdian_phone_no}
-                        className="mt-1 block w-full"
-                        autoComplete="gurdian_phone_no"
-                        onChange={(e) =>
-                            setData("gurdian_phone_no", e.target.value)
-                        }
-                        placeholder="E.G. 01845727676"
-                        required
-                    />
-
-                    <InputError
-                        message={errors.gurdian_phone_no}
-                        className="mt-2"
-                    />
-                </div>
-                <div className="mt-4">
-                    <InputLabel
-                        htmlFor="permanent_address"
-                        value="Permanent Address"
-                    />
-
-                    <TextInput
-                        id="permanent_address"
-                        type="text"
-                        name="permanent_address"
-                        value={data.permanent_address}
-                        className="mt-1 block w-full"
-                        autoComplete="permanent_address"
-                        onChange={(e) =>
-                            setData("permanent_address", e.target.value)
-                        }
-                        placeholder="Your Permanent Address"
-                        required
-                    />
-
-                    <InputError
-                        message={errors.permanent_address}
-                        className="mt-2"
-                    />
+                        <InputError
+                            message={errors.batch_no}
+                            className="mt-2"
+                        />
+                    </div>
                 </div>
                 <div className="mt-4">
                     <InputLabel htmlFor="profile_photo" value="Profile Photo" />
@@ -395,6 +405,89 @@ export default function Register() {
                         message={errors.profile_photo}
                         className="mt-2"
                     />
+                </div>
+
+                {/* Job Information  */}
+                <div className="job-information border border-green-500 p-2 my-4 rounded">
+                    <h2 className="my-2 text-xl font-semibold">
+                        Please fill this section if you are employed
+                    </h2>
+                    <div className="mt-4">
+                        <InputLabel
+                            htmlFor="job_title"
+                            value="Your Job Title"
+                        />
+
+                        <TextInput
+                            id="job_title"
+                            type="text"
+                            name="job_title"
+                            value={data.job_title}
+                            className="mt-1 block w-full"
+                            autoComplete="job_title"
+                            onChange={(e) =>
+                                setData("job_title", e.target.value)
+                            }
+                            placeholder="Job Title"
+                            required
+                        />
+
+                        <InputError
+                            message={errors.job_title}
+                            className="mt-2"
+                        />
+                    </div>
+                    <div className="mt-4">
+                        <InputLabel
+                            htmlFor="job_location"
+                            value="Your Job Location"
+                        />
+
+                        <TextInput
+                            id="job_location"
+                            type="text"
+                            name="job_location"
+                            value={data.job_location}
+                            className="mt-1 block w-full"
+                            autoComplete="job_location"
+                            onChange={(e) =>
+                                setData("job_location", e.target.value)
+                            }
+                            placeholder="Your Job Location (District)"
+                            required
+                        />
+
+                        <InputError
+                            message={errors.job_location}
+                            className="mt-2"
+                        />
+                    </div>
+
+                    <div className="mt-4">
+                        <InputLabel
+                            htmlFor="present_address"
+                            value="Your Present Address"
+                        />
+
+                        <TextInput
+                            id="present_address"
+                            type="text"
+                            name="present_address"
+                            value={data.present_address}
+                            className="mt-1 block w-full"
+                            autoComplete="present_address"
+                            onChange={(e) =>
+                                setData("present_address", e.target.value)
+                            }
+                            placeholder="Your Present Address"
+                            required
+                        />
+
+                        <InputError
+                            message={errors.present_address}
+                            className="mt-2"
+                        />
+                    </div>
                 </div>
 
                 <div className="mt-4">

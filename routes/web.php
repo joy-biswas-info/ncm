@@ -46,7 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/teacher', [TeacherController::class, 'index'])->name('teacher');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth', 'adminallowed')->group(function () {
     Route::get('/all-user', function () {
         $users = User::get();
         return Inertia::render('Admin/AllUser', [

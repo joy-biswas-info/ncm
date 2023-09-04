@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -18,7 +19,7 @@ class StudentController extends Controller
             $searchTerm = $request->input('search');
             $query->where(function ($q) use ($searchTerm) {
                 $q->where('name', 'like', "%$searchTerm%")
-                    ->orWhere('academic_year', 'like', "%$searchTerm%");
+                    ->orWhere('academic_session', 'like', "%$searchTerm%");
             });
         }
 
@@ -31,12 +32,13 @@ class StudentController extends Controller
 
         return Inertia::render('Student/List', [
             'students' => $students,
+            'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
+            'status' => session('status'),
         ]);
     }
 
     public function show(User $student)
     {
-
         return Inertia::render('Student/Show', [
             'student' => $student,
         ]);

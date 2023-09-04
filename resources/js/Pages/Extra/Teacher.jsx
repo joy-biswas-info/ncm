@@ -1,11 +1,12 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { usePage } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 
 const Teacher = ({ auth }) => {
     const { teachers } = usePage().props;
     console.log(teachers);
     return (
         <AuthenticatedLayout user={auth.user}>
+            <Head title="Teacher" />
             <section className="container my-24">
                 <h2 className="text-center font-bold text-4xl mb-10">
                     Our Teachers

@@ -17,7 +17,7 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
     const student = usePage().props.student;
     const {
         name,
-        academic_year,
+        academic_session,
         blood_group,
         profile_photo,
         phone,
@@ -62,7 +62,7 @@ const Show = ({ auth, mustVerifyEmail, status }) => {
                                 icon={faBook}
                                 className="text-green-600"
                             />
-                            <p>Academic Year : {academic_year}</p>
+                            <p>Academic Year : {academic_session}</p>
                         </div>
                         <div className="flex items-center gap-2 mb-2 md:text-xl">
                             <FontAwesomeIcon

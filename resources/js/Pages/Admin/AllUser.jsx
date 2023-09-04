@@ -78,7 +78,7 @@ const AllUser = ({ auth, mustVerifyEmail, status }) => {
                                     {user.weight} Kg
                                 </td>
                                 <td className="px-6 py-2 whitespace-nowrap">
-                                    {user.academic_year}
+                                    {user.academic_session}
                                 </td>
                                 <td className="px-6 py-2 whitespace-nowrap">
                                     {user.approved ? (

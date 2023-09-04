@@ -23,3 +23,9 @@ NCM is a student directory application. Created with Laravel, and React Inertia 
 - Tailwind css.
 - Font awesome (latest).
 - Axios.
+
+## Important routes
+ - admin login: /admin-login
+ - admin email: contact.joybiswas@gmail.com
+ - admin password: passw0rd++$
+    

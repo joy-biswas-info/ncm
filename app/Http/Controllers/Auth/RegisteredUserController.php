@@ -35,6 +35,7 @@ class RegisteredUserController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
+
         $userField = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:' . User::class,
@@ -45,11 +46,13 @@ class RegisteredUserController extends Controller
             'age' => 'required|numeric',
             'gender' => 'required|string',
             'weight' => 'required|numeric',
-            'academic_year' => 'required|string',
+            'academic_session' => 'required|string',
             'class_roll' => 'required|numeric',
-            'gurdian_name' => 'required|string',
-            'gurdian_phone_no' => 'required|string',
+            'batch_no' => 'required|numeric',
+            'job_location' => 'required|string',
+            'job_title' => 'required|string',
             'permanent_address' => 'required|string',
+            'present_address' => 'required|string',
         ]);
 
 
@@ -62,6 +65,7 @@ class RegisteredUserController extends Controller
                 $userField['profile_photo'] = $request->file('profile_photo')->storePublicly('profiles/students', 'public');
             }
 
+            // dd($userField);
             $user = User::create($userField);
             DB::commit();
             event(new Registered($user));

@@ -1,7 +1,7 @@
 import React from "react";
 
 const Card = (props) => {
-    const { name, blood_group, id, academic_year, profile_photo } =
+    const { name, blood_group, id, academic_session, profile_photo } =
         props.student;
 
     return (
@@ -33,7 +33,7 @@ const Card = (props) => {
                         </p>
                     </div>
                     <p className="text-sm font-medium text-gray-900">
-                        {academic_year}
+                        {academic_session}
                     </p>
                 </div>
             </a>

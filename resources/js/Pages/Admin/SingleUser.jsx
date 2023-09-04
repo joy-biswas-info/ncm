@@ -6,7 +6,7 @@ const SingleUser = ({ auth, mustVerifyEmail, status }) => {
     const user = usePage().props.user;
     const {
         name,
-        academic_year,
+        academic_session,
         blood_group,
         profile_photo,
         phone,

@@ -8,6 +8,8 @@ import AdminLink from "@/Components/AdminLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
     faDashboard,
+    faFireAlt,
+    faGraduationCap,
     faSignOut,
     faUser,
 } from "@fortawesome/free-solid-svg-icons";
@@ -40,6 +42,28 @@ export default function AdminLayout({ user, header, children }) {
                                     className="mx-2"
                                 />
                                 All User
+                            </AdminLink>
+                            <AdminLink
+                                href={route("add.teacher")}
+                                active={route().current("add.teacher")}
+                            >
+                                {" "}
+                                <FontAwesomeIcon
+                                    icon={faGraduationCap}
+                                    className="mx-2"
+                                />
+                                Add teacher
+                            </AdminLink>
+                            <AdminLink
+                                href={route("add.teacher")}
+                                active={route().current("add.teacher")}
+                            >
+                                {" "}
+                                <FontAwesomeIcon
+                                    icon={faFireAlt}
+                                    className="mx-2"
+                                />
+                                Emergency contact
                             </AdminLink>
                             <AdminLink
                                 method="post"

@@ -26,7 +26,7 @@ import UpdatePasswordForm from "./Profile/Partials/UpdatePasswordForm";
 export default function Dashboard({ auth }) {
     const {
         name,
-        academic_year,
+        academic_session,
         blood_group,
         profile_photo,
         phone,
@@ -35,9 +35,10 @@ export default function Dashboard({ auth }) {
         age,
         ready_to_donet,
         gender,
-        gurdian_name,
-        gurdian_phone_no,
+        job_location,
+        job_title,
         permanent_address,
+        present_address,
     } = auth.user;
     return (
         <AuthenticatedLayout
@@ -54,13 +55,9 @@ export default function Dashboard({ auth }) {
                 <div className="flex flex-wrap justify-center md:gap-4 md:justify-between items-center mb-4 border-b-2 gap-2">
                     <div className="flex gap-2 items-center flex-wrap">
                         <img
-                            src={
-                                profile_photo
-                                    ? `/storage/${profile_photo}`
-                                    : "./logo.png"
-                            }
-                            alt=""
-                            className="md:rounded-full border-8 border-white w-full h-full md:w-52 md:h-52 mx-auto"
+                            src={`/storage/${profile_photo}`}
+                            alt="Profile_photo"
+                            className="rounded-full border-8 border-white w-full h-full md:w-52 md:h-52 mx-auto"
                         />
                         <h1 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl md:mt-24">
                             {name}
@@ -103,7 +100,7 @@ export default function Dashboard({ auth }) {
                                         icon={faGraduationCap}
                                         className="text-green-600"
                                     />
-                                    <p> Sesson : {academic_year}</p>
+                                    <p> Sesson : {academic_session}</p>
                                 </div>
                                 <div className="flex items-center gap-2 mb-2 md:text-xl">
                                     <FontAwesomeIcon
@@ -162,6 +159,18 @@ export default function Dashboard({ auth }) {
                                         </span>
                                     </p>
                                 </div>
+                                <div className="flex items-center gap-2 mb-2 md:text-xl">
+                                    <FontAwesomeIcon
+                                        icon={faLocation}
+                                        className="text-green-600"
+                                    />
+                                    <p>
+                                        Address:{" "}
+                                        <span className="">
+                                            {permanent_address}
+                                        </span>{" "}
+                                    </p>
+                                </div>
 
                                 <div className="mt-10">
                                     <h3 className="font-semibold text-xl md:2xl ">
@@ -210,46 +219,50 @@ export default function Dashboard({ auth }) {
                             </div>
                         </div>
                     </div>
-                    <div className="flex-auto md:w-1/3 bg-white p-3 rounded-md shadow-md">
-                        <h2 className="text-xl font-bold md:text-2xl my-4">
-                            {" "}
-                            Gurdian Information
-                        </h2>
-                        <div>
-                            <div className="flex items-center gap-2 mb-2 md:text-xl">
-                                <FontAwesomeIcon
-                                    icon={faUser}
-                                    className="text-green-600"
-                                />
-                                <p>
-                                    Name :{" "}
-                                    <span className="">{gurdian_name}</span>{" "}
-                                </p>
-                            </div>
-                            <div className="flex items-center gap-2 mb-2 md:text-xl">
-                                <FontAwesomeIcon
-                                    icon={faPhone}
-                                    className="text-green-600"
-                                />
-                                <p>
-                                    Phone No:{" "}
-                                    <span className="">{gurdian_phone_no}</span>{" "}
-                                </p>
-                            </div>
-                            <div className="flex items-center gap-2 mb-2 md:text-xl">
-                                <FontAwesomeIcon
-                                    icon={faLocation}
-                                    className="text-green-600"
-                                />
-                                <p>
-                                    Address:{" "}
-                                    <span className="">
-                                        {permanent_address}
-                                    </span>{" "}
-                                </p>
+                    {job_title && (
+                        <div className="flex-auto md:w-1/3 bg-white p-3 rounded-md shadow-md">
+                            <h2 className="text-xl font-bold md:text-2xl my-4">
+                                {" "}
+                                Job Information
+                            </h2>
+                            <div>
+                                <div className="flex items-center gap-2 mb-2 md:text-xl">
+                                    <FontAwesomeIcon
+                                        icon={faPhone}
+                                        className="text-green-600"
+                                    />
+                                    <p>
+                                        Job Title:{" "}
+                                        <span className="">{job_title}</span>{" "}
+                                    </p>
+                                </div>
+                                <div className="flex items-center gap-2 mb-2 md:text-xl">
+                                    <FontAwesomeIcon
+                                        icon={faUser}
+                                        className="text-green-600"
+                                    />
+                                    <p>
+                                        Job Location :{" "}
+                                        <span className="">{job_location}</span>{" "}
+                                    </p>
+                                </div>
+
+                                <div className="flex items-center gap-2 mb-2 md:text-xl">
+                                    <FontAwesomeIcon
+                                        icon={faLocation}
+                                        className="text-green-600"
+                                    />
+                                    <p>
+                                        Address:{" "}
+                                        <span className="">
+                                            {present_address}
+                                        </span>{" "}
+                                    </p>
+                                </div>
                             </div>
                         </div>
-                    </div>
+                    )}
+
                     <div className="flex-auto mx-auto md:w-1/3">
                         <UpdatePasswordForm />
                     </div>

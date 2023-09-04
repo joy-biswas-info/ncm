@@ -30,11 +30,11 @@ class UserFactory extends Factory
             'age' => fake()->numberBetween(25),
             'gender' => 'male',
             'weight' => '50',
-            'academic_year' => '2019-2020',
+            'academic_session' => '2019-2020',
             'class_roll' => '63',
             'profile_photo' => fake()->imageUrl(),
-            'gurdian_name' => 'Aurn Biswas',
-            'gurdian_phone_no' => '01845727676',
+            'job_location' => 'Aurn Biswas',
+            'job_title' => '01845727676',
             'permanent_address' => fake()->address(),
             'role' => 'user'
         ];

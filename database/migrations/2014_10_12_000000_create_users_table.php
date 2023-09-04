@@ -27,11 +27,13 @@ return new class extends Migration
             $table->string('weight');
             $table->string('gender');
             $table->string('profile_photo')->nullable();
-            $table->string('academic_year');
+            $table->string('academic_session');
             $table->string('class_roll');
-            $table->string('gurdian_name');
-            $table->string('gurdian_phone_no');
+            $table->string('batch_no');
+            $table->string('job_location')->nullable();
+            $table->string('job_title')->nullable();
             $table->string('permanent_address');
+            $table->string('present_address');
             $table->boolean('approved')->default(false);
             $table->enum('role', UserRole::toArray())->default(UserRole::user);
             $table->rememberToken();

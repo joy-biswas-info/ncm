@@ -6,12 +6,19 @@ use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 
 class VerifyCsrfToken extends Middleware
 {
-    /**
-     * The URIs that should be excluded from CSRF verification.
-     *
-     * @var array<int, string>
-     */
+    // /**
+    //  * The URIs that should be excluded from CSRF verification.
+    //  *
+    //  * @var array<int, string>
+    //  */
+    // protected $except = [
+    //     //
+    // ];
+
+    protected $addHttpCookie = true;
+
     protected $except = [
-        //
+        'auth/facebook/callback',
+        'auth/google/callback',
     ];
 }
