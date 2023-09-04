@@ -28,4 +28,6 @@ NCM is a student directory application. Created with Laravel, and React Inertia 
  - admin login: /admin-login
  - admin email: contact.joybiswas@gmail.com
  - admin password: passw0rd++$
+ - user: rysyhomu@mailinator.com
+ - user Password: Pa$$w0rd!
     
