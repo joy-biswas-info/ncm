@@ -3,16 +3,16 @@
 
 ## About NCM 
 
-NCM is a student directory application. Created with Laravel, and React Inertia on fronted. this is a open source project. Features of NCM:
+NCM is a student directory application. Created with Laravel, and React Inertia on fronted. this is an open source project. Features of NCM:
 
-- Student List with blood group, session/academic year , class roll etc.
+- Student List with blood group, session/academic year, class roll, etc.
 - Searching option with name and blood group.
-- Filttering option with blood group.
+- Filtering option with blood group.
 - Student can update their account.
 - Delete their Account.
-- Student can see who recently visit their account.
-- A user or studen can call the match person for blood or other purpose.
-- Admin can controll Student's account approval, delete account or edit account.
+- Student can see who recently visited their account.
+- A user or students can call the match person for blood or other purpose.
+- Admin can control Student's account approval, delete account, or edit account.
 
 
 ## Technology used on this application
@@ -21,10 +21,11 @@ NCM is a student directory application. Created with Laravel, and React Inertia 
 - React.
 - Blade.
 - Tailwind css.
-- Font awesome (latest).
+- Font Awesome (latest).
 - Axios.
 
 ## Important routes
+ - Live Site: https://mnc.joybiswas.info/
  - admin login: /admin-login
  - admin email: contact.joybiswas@gmail.com
  - admin password: passw0rd++$
